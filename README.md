@@ -62,8 +62,9 @@ To run the **multicycle or pipelined** version of the CPU:
      - `PC_component_Multicycle.txt` for **Multicycle**
      - `PC_component_Pipeline.txt` for **Pipelined**
 
-> ⚠️ All other components (ALU, Decoder, Ring Buffer, etc.) are shared between both versions.  
-> ✅ Testbenches provided work for both. We’ve included three starter testbenches without hazards to get started.
+> All other components (ALU, Decoder, Ring Buffer, etc.) are shared between both versions.  
+
+> Testbenches provided will work for both. We’ve included three starter testbenches without hazards to get started.
 
 ---
 
