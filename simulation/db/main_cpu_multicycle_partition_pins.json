@@ -1,0 +1,153 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "rd_valid_DMEM",
+					"strict" : false
+				},
+				{
+					"name" : "rd_data_DMEM[0]",
+					"strict" : false
+				},
+				{
+					"name" : "rd_data_DMEM[1]",
+					"strict" : false
+				},
+				{
+					"name" : "rd_data_DMEM[2]",
+					"strict" : false
+				},
+				{
+					"name" : "rd_data_DMEM[3]",
+					"strict" : false
+				},
+				{
+					"name" : "rd_data_DMEM[4]",
+					"strict" : false
+				},
+				{
+					"name" : "rd_data_DMEM[5]",
+					"strict" : false
+				},
+				{
+					"name" : "rd_data_DMEM[6]",
+					"strict" : false
+				},
+				{
+					"name" : "rd_data_DMEM[7]",
+					"strict" : false
+				},
+				{
+					"name" : "rd_data_DMEM[8]",
+					"strict" : false
+				},
+				{
+					"name" : "rd_data_DMEM[9]",
+					"strict" : false
+				},
+				{
+					"name" : "rd_data_DMEM[10]",
+					"strict" : false
+				},
+				{
+					"name" : "rd_data_DMEM[11]",
+					"strict" : false
+				},
+				{
+					"name" : "rd_data_DMEM[12]",
+					"strict" : false
+				},
+				{
+					"name" : "rd_data_DMEM[13]",
+					"strict" : false
+				},
+				{
+					"name" : "rd_data_DMEM[14]",
+					"strict" : false
+				},
+				{
+					"name" : "rd_data_DMEM[15]",
+					"strict" : false
+				},
+				{
+					"name" : "rst",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "wr_data_IMEM[15]",
+					"strict" : false
+				},
+				{
+					"name" : "wr_data_IMEM[14]",
+					"strict" : false
+				},
+				{
+					"name" : "wr_data_IMEM[13]",
+					"strict" : false
+				},
+				{
+					"name" : "wr_data_IMEM[12]",
+					"strict" : false
+				},
+				{
+					"name" : "wr_en_IMEM",
+					"strict" : false
+				},
+				{
+					"name" : "wr_data_IMEM[9]",
+					"strict" : false
+				},
+				{
+					"name" : "wr_data_IMEM[6]",
+					"strict" : false
+				},
+				{
+					"name" : "wr_data_IMEM[10]",
+					"strict" : false
+				},
+				{
+					"name" : "wr_data_IMEM[7]",
+					"strict" : false
+				},
+				{
+					"name" : "wr_data_IMEM[11]",
+					"strict" : false
+				},
+				{
+					"name" : "wr_data_IMEM[8]",
+					"strict" : false
+				},
+				{
+					"name" : "wr_data_IMEM[4]",
+					"strict" : false
+				},
+				{
+					"name" : "wr_data_IMEM[3]",
+					"strict" : false
+				},
+				{
+					"name" : "wr_data_IMEM[5]",
+					"strict" : false
+				},
+				{
+					"name" : "wr_data_IMEM[0]",
+					"strict" : false
+				},
+				{
+					"name" : "wr_data_IMEM[2]",
+					"strict" : false
+				},
+				{
+					"name" : "wr_data_IMEM[1]",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

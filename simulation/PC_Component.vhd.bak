@@ -1,0 +1,47 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity PC_Component is
+    port (
+        clk             : in std_logic;
+        rst             : in std_logic;
+        
+        -- JRI instruction detection signals
+        is_jri          : in std_logic;  -- '1' if current instruction is JRI
+        regA_data       : in std_logic_vector(15 downto 0);  -- Base address from regA
+        jri_imm         : in std_logic_vector(8 downto 0);   -- 9-bit immediate value
+        
+        -- Current PC value and next PC value
+        pc_current      : out std_logic_vector(15 downto 0); -- Current PC value
+        pc_next         : out std_logic_vector(15 downto 0)  -- Next PC value (available before rising edge)
+    );
+end entity PC_Component;
+
+architecture rtl of PC_Component is
+    signal pc_reg : unsigned(15 downto 0) := (others => '0');
+    signal pc_next_internal : unsigned(15 downto 0);
+    signal jri_target : unsigned(15 downto 0);
+begin
+    -- Compute JRI target address: regA_data + 2*jri_imm
+    -- Sign-extend the immediate value and shift left by 1 (multiply by 2)
+    jri_target <= unsigned(regA_data) + shift_left(resize(signed(jri_imm & '0'), 16), 1);
+    
+    -- Calculate next PC based on current instruction
+    pc_next_internal <= jri_target when is_jri = '1' else
+                        pc_reg + 1;
+    
+    -- Register process to update the PC
+    process(clk, rst)
+    begin
+        if rst = '1' then
+            pc_reg <= (others => '0');
+        elsif rising_edge(clk) then
+            pc_reg <= pc_next_internal;
+        end if;
+    end process;
+    
+    -- Output assignments
+    pc_current <= std_logic_vector(pc_reg);
+    pc_next <= std_logic_vector(pc_next_internal);
+end architecture rtl;

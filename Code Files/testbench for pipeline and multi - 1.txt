@@ -1,0 +1,233 @@
+	LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+USE ieee.numeric_std.all;
+
+entity testbench is 
+end testbench;
+
+architecture rtl of testbench is
+    -- Declaring component to test
+    component proc is
+        generic (
+            -- 16 bit data
+            RAM_WIDTH : integer := 16;
+            RAM_DEPTH : integer := 32
+        );
+        port(
+            clk : in std_logic;
+            rst : in std_logic;
+            
+            -- Write to imem
+            wr_en_IMEM : in std_logic;
+            wr_data_IMEM : in std_logic_vector(RAM_WIDTH - 1 downto 0);
+            
+            -- Read from dmem
+            rd_en_DMEM : in std_logic;
+            rd_valid_DMEM : out std_logic;
+            rd_data_DMEM : out std_logic_vector(RAM_WIDTH - 1 downto 0)
+        );
+    end component;
+    
+    -- Signal Declarations
+    signal clk : std_logic := '0';
+    signal rst : std_logic := '1';
+    signal wr_en_IMEM : std_logic := '0';
+    signal wr_data_IMEM : std_logic_vector(15 downto 0);
+    signal rd_en_DMEM : std_logic := '0';
+    signal rd_valid_DMEM : std_logic;
+    signal rd_data_DMEM : std_logic_vector(15 downto 0);
+    
+    -- Constants for instruction format
+    constant LW_OPCODE  : std_logic_vector(3 downto 0) := "0000";
+    constant SW_OPCODE  : std_logic_vector(3 downto 0) := "0001";
+    constant ADD_OPCODE : std_logic_vector(3 downto 0) := "0010";
+    constant SUB_OPCODE : std_logic_vector(3 downto 0) := "0011";
+    constant MUL_OPCODE : std_logic_vector(3 downto 0) := "0100";
+    constant ADDI_OPCODE: std_logic_vector(3 downto 0) := "0101";
+    constant SLL_OPCODE : std_logic_vector(3 downto 0) := "0110";
+    constant JRI_OPCODE : std_logic_vector(3 downto 0) := "0111";
+    
+    -- Function to create ADD instruction
+    function create_add_instr(dest_reg, src_reg1, src_reg2 : std_logic_vector(2 downto 0)) return std_logic_vector is
+    begin
+        return ADD_OPCODE & dest_reg & src_reg1 & src_reg2 & "000";
+    end function;
+    
+    -- Function to create SUB instruction
+    function create_sub_instr(dest_reg, src_reg1, src_reg2 : std_logic_vector(2 downto 0)) return std_logic_vector is
+    begin
+        return SUB_OPCODE & dest_reg & src_reg1 & src_reg2 & "000";
+    end function;
+ 
+    -- Function to create MUL instruction
+    function create_mul_instr(dest_reg, src_reg1, src_reg2 : std_logic_vector(2 downto 0)) return std_logic_vector is
+    begin
+        return MUL_OPCODE & dest_reg & src_reg1 & src_reg2 & "000";
+    end function;
+	 
+    -- Function to create ADDI instruction
+    function create_addi_instr(dest_reg, src_reg : std_logic_vector(2 downto 0); imm : std_logic_vector(5 downto 0)) return std_logic_vector is
+    begin
+        return ADDI_OPCODE & dest_reg & src_reg & imm;
+    end function;
+    
+
+    -- Function to create LW instruction
+    function create_lw_instr(dest_reg : std_logic_vector(2 downto 0)) return std_logic_vector is
+    begin
+        return LW_OPCODE & dest_reg & "000000000"; -- Unused 9 bits
+    end function;
+    
+    -- Function to create SW instruction
+    function create_sw_instr(src_reg : std_logic_vector(2 downto 0)) return std_logic_vector is
+    begin
+        return SW_OPCODE & src_reg & "000000000"; -- Unused 9 bits
+    end function;
+	 
+	     -- Function to create JRI instruction
+    function create_jri_instr(src_reg : std_logic_vector(2 downto 0); imm : std_logic_vector(8 downto 0)) return std_logic_vector is
+    begin
+        return jri_OPCODE & src_reg & imm; -- imm 9 bits, opcode 4 bits
+    end function;
+    
+    -- Constants for register indices
+    constant R0 : std_logic_vector(2 downto 0) := "000";
+    constant R1 : std_logic_vector(2 downto 0) := "001";
+    constant R2 : std_logic_vector(2 downto 0) := "010";
+    constant R3 : std_logic_vector(2 downto 0) := "011";
+    constant R4 : std_logic_vector(2 downto 0) := "100";
+    constant R5 : std_logic_vector(2 downto 0) := "101";
+    constant R6 : std_logic_vector(2 downto 0) := "110";
+    constant R7 : std_logic_vector(2 downto 0) := "111";
+    
+begin
+    -- Instantiate the processor
+    processor: proc port map(
+        clk => clk,
+        rst => rst,
+        wr_en_IMEM => wr_en_IMEM,
+        wr_data_IMEM => wr_data_IMEM,
+        rd_en_DMEM => rd_en_DMEM,
+        rd_valid_DMEM => rd_valid_DMEM,
+        rd_data_DMEM => rd_data_DMEM
+    );
+    
+    -- Clock generation (100MHz = 10ns period)
+    clk <= not clk after 5 ns;
+    
+    -- Reset generation
+    rst <= '1', '0' after 20 ns;
+    
+    -- Initial register file values for reference
+    -- signal registers : reg_array := (
+    --     0 => "0000000000001111",  -- R0 = 0x000F (15 decimal)
+    --     1 => "1111000000000000",  -- R1 = 0xF000 (61440 decimal)
+    --     2 => "0000000000000011",  -- R2 = 0x0003 (3 decimal)
+    --     3 => "0000000000000100",  -- R3 = 0x0004 (4 decimal)
+    --     4 => "0000000000000101",  -- R4 = 0x0005 (5 decimal)
+    --     5 => "0000000000000110",  -- R5 = 0x0006 (6 decimal)
+    --     6 => "0000000000000111",  -- R6 = 0x0007 (7 decimal)
+    --     7 => "0000001100000000"   -- R7 = 0x0300 (768 decimal)
+    -- );
+    
+    -- Process to load instructions into IMEM
+    process
+        -- Procedure to write an instruction to IMEM
+        procedure write_instruction(instr : std_logic_vector(15 downto 0)) is
+        begin
+            wait until falling_edge(clk);
+            wr_data_IMEM <= instr;
+            wr_en_IMEM <= '1';
+            wait until rising_edge(clk);
+            wr_en_IMEM <= '0';
+            --wait for 10 ns; -- Wait one clock cycle before loading next instruction
+        end procedure;
+    begin
+        -- Wait for reset to complete
+        wait for 30 ns;
+        
+        -- First, load all instructions into IMEM
+        -- Note: Register file is already initialized with the following values:
+        -- R0 = 0x000F (15 decimal)
+        -- R1 = 0xF000 (61440 decimal)
+        -- R2 = 0x0003 (3 decimal)
+        -- R3 = 0x0004 (4 decimal)
+        -- R4 = 0x0005 (5 decimal)
+        -- R5 = 0x0006 (6 decimal)
+        -- R6 = 0x0007 (7 decimal)
+        -- R7 = 0x0300 (768 decimal)
+			
+			write_instruction(create_sw_instr(R0));  
+			write_instruction(create_sw_instr(R1));  
+			write_instruction(create_sw_instr(R2));  
+			write_instruction(create_sw_instr(R3));  
+			write_instruction(create_sw_instr(R4));  
+			write_instruction(create_sw_instr(R5));  
+			write_instruction(create_sw_instr(R6));  
+			write_instruction(create_sw_instr(R7));  
+			write_instruction(create_lw_instr(R7));
+			write_instruction(create_lw_instr(R6));
+			write_instruction(create_lw_instr(R5));
+			write_instruction(create_lw_instr(R4));
+			write_instruction(create_lw_instr(R3));
+			write_instruction(create_lw_instr(R2));
+			write_instruction(create_lw_instr(R1));
+			write_instruction(create_lw_instr(R0));
+						
+			write_instruction(create_addi_instr(R7,R7,"000000"));
+			write_instruction(create_addi_instr(R7,R7,"000000"));
+			write_instruction(create_addi_instr(R7,R7,"000000"));
+			write_instruction(create_addi_instr(R7,R7,"000000"));
+			write_instruction(create_jri_instr(R7,"000010000"));
+			--write_instruction(create_jri_instr(R7,"100000111"));
+			write_instruction(create_sw_instr(R0));  
+			write_instruction(create_sw_instr(R1));  
+			write_instruction(create_sw_instr(R2));  
+			write_instruction(create_sw_instr(R3));  
+			write_instruction(create_sw_instr(R4));  
+			write_instruction(create_sw_instr(R5));  
+			write_instruction(create_sw_instr(R6));  
+			write_instruction(create_sw_instr(R7));  
+			write_instruction(create_lw_instr(R7));
+			write_instruction(create_lw_instr(R6));
+			write_instruction(create_lw_instr(R5));
+			write_instruction(create_lw_instr(R4));
+			write_instruction(create_lw_instr(R3));
+			write_instruction(create_lw_instr(R2));
+			write_instruction(create_lw_instr(R1));
+			write_instruction(create_lw_instr(R0));  			
+			
+        -- Done loading instructions
+        wr_en_IMEM <= '0';
+        
+        -- Wait for several cycles to ensure all instructions complete
+        wait for 50 ns;
+        
+        -- Enable reading from DMEM to verify results
+        rd_en_DMEM <= '1';
+        
+        -- Run simulation for enough time to complete all instructions
+        wait for 500 ns;
+        
+        -- End simulation
+        assert false report "Simulation ended successfully" severity note;
+        wait;
+    end process;
+    
+    -- Process to monitor and report DMEM read results
+    process
+    begin
+        wait until rd_valid_DMEM = '1';
+        report "DMEM read value: " & integer'image(to_integer(unsigned(rd_data_DMEM)));
+        wait for 10 ns;
+    end process;
+    
+    -- Process to dump register values periodically
+    process
+    begin
+        wait for 300 ns; -- Wait for instructions to execute
+        report "===== Simulation Complete =====";
+        wait;
+    end process;
+    
+end architecture;

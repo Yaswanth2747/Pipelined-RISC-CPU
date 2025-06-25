@@ -1,0 +1,422 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity proc is
+    generic (
+        -- 16 bit data
+        RAM_WIDTH : integer := 16;
+        RAM_DEPTH : integer := 32
+    );
+    port(
+        clk : in std_logic;
+        rst : in std_logic;
+        
+        -- Write to imem
+        wr_en_IMEM : in std_logic;
+        wr_data_IMEM : in std_logic_vector(RAM_WIDTH - 1 downto 0);
+        
+        -- Read from dmem
+        rd_en_DMEM : in std_logic;
+        rd_valid_DMEM : out std_logic;
+        rd_data_DMEM : out std_logic_vector(RAM_WIDTH - 1 downto 0)
+    );
+end proc;
+architecture rtl of proc is
+    -- Processor states (execution stages)
+    type proc_state_type is (IDLE, FETCH, DECODE, EXECUTE, MEMORY, WRITEBACK);
+    signal current_state, next_state : proc_state_type;
+    
+    -- Instruction register and PC
+    signal instr_reg : std_logic_vector(RAM_WIDTH - 1 downto 0);
+    signal pc_current : std_logic_vector(15 downto 0);
+    signal pc_next : std_logic_vector(15 downto 0);
+    signal pc_num : integer;
+    
+    -- Control signals
+    signal rd_en_IMEM : std_logic;
+    signal rd_valid_IMEM : std_logic;
+    signal imem_out, dmem_out : std_logic_vector(RAM_WIDTH - 1 downto 0);
+    signal wr_dmem_data : std_logic_vector(RAM_WIDTH - 1 downto 0);
+    signal wr_en_DMEM, rf_wr_en : std_logic;
+    signal mux_alua_sel : std_logic;
+    signal mux_alub_sel : std_logic_vector(1 downto 0);
+    signal dest_mux_sel : std_logic;
+    signal rd_en_DMEM_sig : std_logic;
+    
+    -- JRI instruction detection and handling
+    signal is_jri_detected,next_if : std_logic := '0';
+    signal is_jri_active : std_logic := '0';
+    signal regA_data_for_jri : std_logic_vector(15 downto 0);
+    signal jri_imm_for_pc : std_logic_vector(8 downto 0);
+    
+    -- Counter for initial delay
+    signal start_counter : integer range 0 to 31 := 0;
+    signal initial_fetch_done : std_logic := '0';
+    
+    -- Components of the processor
+    component ring_buffer is
+        generic (
+            RAM_WIDTH : integer := 16;
+            RAM_DEPTH : integer := 32
+        );
+        port (
+            clk : in std_logic;
+            rst : in std_logic;
+        
+            -- Write port
+            wr_en : in std_logic;
+            wr_data : in std_logic_vector(RAM_WIDTH - 1 downto 0);
+        
+            -- Read port
+            rd_en : in std_logic;
+            rd_valid : out std_logic;
+            rd_data : out std_logic_vector(RAM_WIDTH - 1 downto 0);
+        
+            -- Flags
+            empty : out std_logic;
+            empty_next : out std_logic;
+            full : out std_logic;
+            full_next : out std_logic;
+        
+            -- The number of elements in the FIFO
+            fill_count : out integer range RAM_DEPTH - 1 downto 0
+        );
+    end component;
+    
+    component datapath is
+        port(
+            clk, reset          : in std_logic;
+            instr               : in std_logic_vector(15 downto 0);
+            rf_wr_en            : in std_logic;
+            mux_alua_sel        : in std_logic;
+            mux_alub_sel        : in std_logic_vector(1 downto 0);
+            dest_mux_sel        : in std_logic;
+            dmem_data_write     : out std_logic_vector(15 downto 0);
+            dmem_data_read      : in std_logic_vector(15 downto 0);
+            R0, R1, R2, R3, R4, R5, R6, R7 : out std_logic_vector(15 downto 0); -- Debug
+            pc_jri              : out std_logic_vector(15 downto 0);
+            jri_regA_data       : out std_logic_vector(15 downto 0);
+            jri_immediate       : out std_logic_vector(8 downto 0)
+        );
+    end component;
+
+    component PC_Component is
+        port (
+            clk             : in std_logic;
+            rst             : in std_logic;
+				next_if			 : in std_logic;
+            is_jri          : in std_logic;
+            regA_data       : in std_logic_vector(15 downto 0);
+            jri_imm         : in std_logic_vector(8 downto 0);
+            start           : in std_logic;
+            pc_current      : out std_logic_vector(15 downto 0);
+            pc_next         : out std_logic_vector(15 downto 0)
+        );
+    end component;
+
+begin
+    -- PC number for easier debugging
+    pc_num <= to_integer(unsigned(pc_current));
+    
+    rd_data_DMEM <= dmem_out;
+    
+
+    PC_inst: PC_Component
+        port map(
+            clk => clk,
+            rst => rst,
+            next_if => next_if,
+				is_jri => is_jri_active,
+            regA_data => regA_data_for_jri,
+            jri_imm => jri_imm_for_pc,
+            start => rd_valid_IMEM,  -- PC will advance when IMEM read is valid
+            pc_current => pc_current,
+            pc_next => pc_next
+        );
+
+    IMEM: ring_buffer
+        port map(
+            clk          => clk,
+            rst          => rst,
+            wr_en        => wr_en_IMEM,
+            wr_data      => wr_data_IMEM,
+            rd_en        => rd_en_IMEM,
+            rd_valid     => rd_valid_IMEM,
+            rd_data      => imem_out,
+            empty        => open,
+            empty_next   => open,
+            full         => open,
+            full_next    => open,
+            fill_count   => open    
+        );
+
+    DMEM: ring_buffer
+        port map(
+            clk          => clk,
+            rst          => rst,
+            wr_en        => wr_en_DMEM,
+            wr_data      => wr_dmem_data,
+            rd_en        => rd_en_DMEM_sig,
+            rd_valid     => rd_valid_DMEM,
+            rd_data      => dmem_out,
+            empty        => open,
+            empty_next   => open,
+            full         => open,
+            full_next    => open,
+            fill_count   => open
+        );
+        
+    Datapath_inst: datapath
+        port map(
+            clk             => clk, 
+            reset           => rst,         
+            instr           => instr_reg,
+            rf_wr_en        => rf_wr_en,
+            mux_alua_sel    => mux_alua_sel,
+            mux_alub_sel    => mux_alub_sel,
+            dest_mux_sel    => dest_mux_sel,
+            dmem_data_write => wr_dmem_data,
+            dmem_data_read  => dmem_out,
+            pc_jri          => open,
+            jri_regA_data   => regA_data_for_jri,
+            jri_immediate   => jri_imm_for_pc
+        );
+  
+    -- Initial delay counter process
+    process(clk, rst)
+    begin
+        if rst = '1' then
+            start_counter <= 0;
+            initial_fetch_done <= '0';
+        elsif rising_edge(clk) then
+            if start_counter < 5 then
+                start_counter <= start_counter + 1;
+            elsif start_counter = 5 and initial_fetch_done = '0' then
+                -- We've reached the 5th rising edge after reset
+                initial_fetch_done <= '1';
+            end if;
+        end if;
+    end process;
+    
+	 
+	 process(next_state)
+	 begin
+		if next_state = FETCH then
+				next_if <= '1';
+		else
+				next_if <= '0';
+		end if;
+	end process;
+
+
+    -- State register process
+    process(clk, rst)
+    begin
+        if rst = '1' then
+            current_state <= IDLE;
+            --instr_reg <= (others => '0');
+            is_jri_detected <= '0';
+        elsif rising_edge(clk) then
+            current_state <= next_state;
+            
+            -- Capture instruction in DECODE state when valid from IMEM
+            -- (This happens two cycles after rd_en_IMEM goes high)
+            -- if current_state = DECODE and rd_valid_IMEM = '1' then
+            --  instr_reg <= imem_out;
+            -- end if;
+            
+            -- Check for JRI instruction in EXECUTE state (after we have the valid instruction)
+            if current_state = FETCH then
+                if instr_reg(15 downto 12) = "0111" then -- JRI opcode
+                    is_jri_detected <= '1';
+                else
+                    is_jri_detected <= '0';
+                end if;
+            end if;
+            
+            -- Reset JRI detected flag after WRITEBACK
+            if current_state = WRITEBACK then
+                is_jri_detected <= '0';
+            end if;
+        end if;
+    end process;
+    
+    -- JRI activation process (at falling edge)
+    process(clk)
+    begin
+        if falling_edge(clk) then
+            -- Default is not active
+            is_jri_active <= '0';
+            
+            -- Activating JRI when detected in MEMORY state (shifted from EXECUTE)
+            if current_state = DECODE and is_jri_detected = '1' then
+                is_jri_active <= '1';
+			   elsif current_state = FETCH then
+					 instr_reg <= imem_out;
+            end if;
+        end if;
+		  
+
+    end process;
+    
+    -- Next state logic process
+    process(current_state, rd_valid_IMEM, initial_fetch_done)
+    begin
+        -- Default next state is the current state
+        next_state <= current_state;
+        
+        case current_state is
+            when IDLE =>
+                -- Only move to FETCH after initial fetch is done
+                if initial_fetch_done = '1' then
+                    next_state <= FETCH;
+                end if;
+                
+            when FETCH =>
+                -- From FETCH, we always go to a wait state (DECODE)
+                -- This gives time for ring buffer to fetch the instruction
+                next_state <= DECODE;
+                
+            when DECODE =>
+                -- From DECODE, we wait for instruction to be valid
+               -- if rd_valid_IMEM = '1' then
+                    next_state <= EXECUTE;
+               -- end if;
+                
+            when EXECUTE =>
+                next_state <= MEMORY;
+                
+            when MEMORY =>
+                next_state <= WRITEBACK;
+                
+            when WRITEBACK =>
+                -- After WRITEBACK, go back to FETCH for the next instruction
+                next_state <= FETCH;
+                
+            when others =>
+                next_state <= IDLE;
+        end case;
+    end process;
+    
+    -- Control signals generation process
+    process(current_state, instr_reg, start_counter, initial_fetch_done)
+    begin
+        -- Default control signals
+        rd_en_IMEM <= '0';
+        rd_en_DMEM_sig <= '0';
+        wr_en_DMEM <= '0';
+        rf_wr_en <= '0';
+        mux_alua_sel <= '0';
+        mux_alub_sel <= "00";
+        dest_mux_sel <= '0';
+        
+        -- Initial fetch at exactly the 5th clock cycle
+        if start_counter = 5 and initial_fetch_done = '0' then
+            --rd_en_IMEM <= '1';
+        end if;
+        
+        case current_state is
+            when IDLE =>
+                -- No operations in IDLE state besides the initial fetch
+                
+            when FETCH =>
+                -- In FETCH, we're just waiting for the instruction
+                
+            when DECODE =>
+                -- Set datapath control signals based on instruction opcode
+                case instr_reg(15 downto 12) is
+                    -- LW instruction (opcode 0000)
+                    when "0000" =>
+                        mux_alua_sel <= '1';  -- Use regA for address base
+                        
+                    -- SW instruction (opcode 0001)
+                    when "0001" =>
+                        mux_alua_sel <= '1';  -- Use regA for address base
+                        
+                    -- ADD instruction (opcode 0010)
+                    when "0010" =>
+                        mux_alua_sel <= '0';  -- Use regB for ALU
+                        mux_alub_sel <= "00";  -- Use regC for ALU
+                        
+                    -- SUB instruction (opcode 0011)
+                    when "0011" =>
+                        mux_alua_sel <= '0';  -- Use regB for ALU
+                        mux_alub_sel <= "00";  -- Use regC for ALU
+                        
+                    -- MUL instruction (opcode 0100)
+                    when "0100" =>
+                        mux_alua_sel <= '0';  -- Use regB for ALU
+                        mux_alub_sel <= "00";  -- Use regC for ALU
+                        
+                    -- ADDI instruction (opcode 0101)
+                    when "0101" =>
+                        mux_alua_sel <= '0';  -- Use regB for ALU
+                        mux_alub_sel <= "01";  -- Use sign-extended immediate
+                        
+                    -- SLL instruction (opcode 0110)
+                    when "0110" =>
+                        mux_alua_sel <= '0';  -- Use regB for ALU
+                        mux_alub_sel <= "00";  -- Use regC for shift amount
+                        
+                    -- JRI instruction (opcode 0111)
+                    when "0111" =>
+                        mux_alua_sel <= '1';  -- Use regA for jump address base
+                        mux_alub_sel <= "10";  -- Use JRI immediate value
+                        
+                    when others => null;
+                end case;
+                
+            when EXECUTE =>
+                                -- Memory operations based on instruction type
+                case instr_reg(15 downto 12) is
+                    -- LW instruction (opcode 0000)
+                    when "0000" =>
+                        rd_en_DMEM_sig <= '1';  -- Read from memory
+                        
+                    -- SW instruction (opcode 0001)
+                    when "0001" =>
+                        wr_en_DMEM <= '1';  -- Write to memory
+                        
+                    when others => null;
+                end case;
+					 
+            when MEMORY =>
+                -- Memory operations based on instruction type
+                case instr_reg(15 downto 12) is
+                    -- LW instruction (opcode 0000)
+                    when "0000" =>
+                        rd_en_DMEM_sig <= '1';  -- Read from memory
+                        
+                    -- SW instruction (opcode 0001)
+                    when "0001" =>
+                        wr_en_DMEM <= '1';  -- Write to memory
+                        
+                    when others => null;
+                end case;
+                
+                -- Fetching the next instruction during MEMORY stage
+                -- This gives enough time for the instruction to be ready by DECODE
+                rd_en_IMEM <= '1';
+                
+            when WRITEBACK =>
+                -- Register file write back based on instruction type
+                case instr_reg(15 downto 12) is
+                    -- LW instruction (opcode 0000)
+                    when "0000" =>
+                        rf_wr_en <= '1';
+                        dest_mux_sel <= '0';  -- Select memory data
+                        
+                    -- ALU operations (ADD, SUB, MUL, ADDI, SLL)
+                    when "0010" | "0011" | "0100" | "0101" | "0110" =>
+                        rf_wr_en <= '1';
+                        dest_mux_sel <= '1';  -- Select ALU result
+                        
+                    when others => 
+                        rf_wr_en <= '0';
+                end case;
+                
+            when others => null;
+        end case;
+    end process;
+end architecture;

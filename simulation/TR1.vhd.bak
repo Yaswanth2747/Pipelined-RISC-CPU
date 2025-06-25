@@ -1,0 +1,45 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity TR1 is
+    port (
+        clk       : in std_logic;
+        instr     : in std_logic_vector(15 downto 0);
+        opcode    : out std_logic_vector(3 downto 0);
+        regA      : out std_logic_vector(2 downto 0);
+        regB      : out std_logic_vector(2 downto 0);
+        regC      : out std_logic_vector(2 downto 0);
+        addi_imm  : out std_logic_vector(5 downto 0);
+        jri_imm   : out std_logic_vector(8 downto 0)
+    );
+end entity TR1;
+
+architecture Behavioral of TR1 is
+    signal opcode_reg   : std_logic_vector(3 downto 0);
+    signal regA_reg     : std_logic_vector(2 downto 0);
+    signal regB_reg     : std_logic_vector(2 downto 0);
+    signal regC_reg     : std_logic_vector(2 downto 0);
+    signal addi_imm_reg : std_logic_vector(5 downto 0);
+    signal jri_imm_reg  : std_logic_vector(8 downto 0);
+begin
+    -- Assign internal registers to outputs
+    opcode    <= opcode_reg;
+    regA      <= regA_reg;
+    regB      <= regB_reg;
+    regC      <= regC_reg;
+    addi_imm  <= addi_imm_reg;
+    jri_imm   <= jri_imm_reg;
+
+    -- Update logic on rising edge of clock
+    process(clk)
+    begin
+        if rising_edge(clk) then
+            opcode_reg   <= instr(15 downto 12);
+            regA_reg     <= instr(11 downto 9);
+            regB_reg     <= instr(8 downto 6);
+            regC_reg     <= instr(5 downto 3);
+            addi_imm_reg <= instr(5 downto 0);
+            jri_imm_reg  <= instr(8 downto 0);
+        end if;
+    end process;
+end architecture Behavioral;

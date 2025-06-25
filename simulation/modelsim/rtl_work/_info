@@ -1,0 +1,646 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/simulation/modelsim
+Ealu
+Z1 w1746128715
+Z2 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+Z3 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z4 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+R0
+Z5 8C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/ALU.vhd
+Z6 FC:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/ALU.vhd
+l0
+L5
+VNeKZ4;0XXVMW7n]f2daS<1
+!s100 =58J>OQ9i4zl0CCZRC_NB0
+Z7 OV;C;10.5b;63
+31
+Z8 !s110 1746293312
+!i10b 1
+Z9 !s108 1746293312.000000
+Z10 !s90 -reportprogress|300|-93|-work|work|C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/ALU.vhd|
+Z11 !s107 C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/ALU.vhd|
+!i113 1
+Z12 o-93 -work work
+Z13 tExplicit 1 CvgOpt 0
+Astruct
+R2
+R3
+R4
+DEx4 work 3 alu 0 22 NeKZ4;0XXVMW7n]f2daS<1
+l14
+L12
+V@HVg<_j_MfBMjb9?gW@g03
+!s100 bfdClcF`[YRZ_>FW^PkFL1
+R7
+31
+R8
+!i10b 1
+R9
+R10
+R11
+!i113 1
+R12
+R13
+Edatapath
+Z14 w1746163359
+R2
+R3
+R4
+R0
+Z15 8C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/datapath.vhd
+Z16 FC:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/datapath.vhd
+l0
+L5
+VL`QLj^Khen=ik0MY86FTh1
+!s100 de9VBUaNYUGF9XKgEKW5f3
+R7
+31
+R8
+!i10b 1
+R9
+Z17 !s90 -reportprogress|300|-93|-work|work|C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/datapath.vhd|
+Z18 !s107 C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/datapath.vhd|
+!i113 1
+R12
+R13
+Apath
+R2
+R3
+R4
+DEx4 work 8 datapath 0 22 L`QLj^Khen=ik0MY86FTh1
+l170
+L23
+VTJTJHUFGBLb8Z@5V3=ghG1
+!s100 OF[aGb?5EGDB9cFG2Vag>1
+R7
+31
+R8
+!i10b 1
+R9
+R17
+R18
+!i113 1
+R12
+R13
+Emux2
+Z19 w1745752763
+R3
+R4
+R0
+Z20 8C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/mux2.vhd
+Z21 FC:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/mux2.vhd
+l0
+L4
+VD7ShgT;l]XlfLA@2Le5iC0
+!s100 W9cTn11gUIKb[;b7`bbRM0
+R7
+31
+Z22 !s110 1746293311
+!i10b 1
+Z23 !s108 1746293311.000000
+Z24 !s90 -reportprogress|300|-93|-work|work|C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/mux2.vhd|
+Z25 !s107 C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/mux2.vhd|
+!i113 1
+R12
+R13
+Abehavior
+R3
+R4
+DEx4 work 4 mux2 0 22 D7ShgT;l]XlfLA@2Le5iC0
+l13
+L12
+Vbh4V_[RS<zgcDZC2oh8X`2
+!s100 ANoBMd9mCYi^eQ=>fPU1H2
+R7
+31
+R22
+!i10b 1
+R23
+R24
+R25
+!i113 1
+R12
+R13
+Emux2x1_3bit
+Z26 w1745760271
+R3
+R4
+R0
+Z27 8C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/mux2x1_3bit.vhd
+Z28 FC:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/mux2x1_3bit.vhd
+l0
+L4
+Vd9OP@0P99e7LHCXo?EOUg3
+!s100 mX`_nkEibge@Ph9LGmmE_1
+R7
+31
+R8
+!i10b 1
+R9
+Z29 !s90 -reportprogress|300|-93|-work|work|C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/mux2x1_3bit.vhd|
+Z30 !s107 C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/mux2x1_3bit.vhd|
+!i113 1
+R12
+R13
+Abehavioral
+R3
+R4
+DEx4 work 11 mux2x1_3bit 0 22 d9OP@0P99e7LHCXo?EOUg3
+l14
+L13
+V_F5i17Gki>Ia>zO2VK2lP3
+!s100 7F:8zOOlGn;CAB[:`klmm3
+R7
+31
+R8
+!i10b 1
+R9
+R29
+R30
+!i113 1
+R12
+R13
+Emux4
+Z31 w1745752830
+R3
+R4
+R0
+Z32 8C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/mux4.vhd
+Z33 FC:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/mux4.vhd
+l0
+L4
+VXHWg^0@eSjb0POnO]z_?Z1
+!s100 dcaUh:Z3]=a2G2b6D2F`P2
+R7
+31
+R8
+!i10b 1
+R9
+Z34 !s90 -reportprogress|300|-93|-work|work|C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/mux4.vhd|
+Z35 !s107 C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/mux4.vhd|
+!i113 1
+R12
+R13
+Abehavior
+R3
+R4
+DEx4 work 4 mux4 0 22 XHWg^0@eSjb0POnO]z_?Z1
+l13
+L12
+V2N5emdfA_hbfno@_>>kP12
+!s100 d:Hl3NoYmjJ:73?YmSj]i3
+R7
+31
+R8
+!i10b 1
+R9
+R34
+R35
+!i113 1
+R12
+R13
+Epc_component
+Z36 w1746285968
+R2
+R3
+R4
+R0
+Z37 8C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/PC_Component.vhd
+Z38 FC:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/PC_Component.vhd
+l0
+L5
+VhYc2UVm=k^J1oIe@aEj5Z3
+!s100 L`U7nWHVS^BQ:E89OYkh02
+R7
+31
+R8
+!i10b 1
+R9
+Z39 !s90 -reportprogress|300|-93|-work|work|C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/PC_Component.vhd|
+Z40 !s107 C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/PC_Component.vhd|
+!i113 1
+R12
+R13
+Artl
+R2
+R3
+R4
+DEx4 work 12 pc_component 0 22 hYc2UVm=k^J1oIe@aEj5Z3
+l23
+L18
+VEWVOHNzm]75:?nJI:UiW71
+!s100 NGzKS2YPAe13WMICDK9gN2
+R7
+31
+R8
+!i10b 1
+R9
+R39
+R40
+!i113 1
+R12
+R13
+Eproc
+Z41 w1746293273
+R2
+R3
+R4
+R0
+Z42 8C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/proc.vhd
+Z43 FC:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/proc.vhd
+l0
+L5
+VWmo7AUlD`MaH:c5PWIG8b3
+!s100 a=]O6BC=YTQ=RZ@3RIUWZ2
+R7
+31
+R8
+!i10b 1
+R9
+Z44 !s90 -reportprogress|300|-93|-work|work|C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/proc.vhd|
+Z45 !s107 C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/proc.vhd|
+!i113 1
+R12
+R13
+Artl
+R2
+R3
+R4
+DEx4 work 4 proc 0 22 Wmo7AUlD`MaH:c5PWIG8b3
+l135
+L26
+Vc7JK3ZSXeICU?05A_V;mY1
+!s100 5UDcEYYV]mZRIjV;cKjQ93
+R7
+31
+R8
+!i10b 1
+R9
+R44
+R45
+!i113 1
+R12
+R13
+Eregister_file
+Z46 w1745944143
+R2
+R3
+R4
+R0
+Z47 8C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/Register_File.vhd
+Z48 FC:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/Register_File.vhd
+l0
+L5
+VQoC2Ac``=a[LQz@a9m5XZ3
+!s100 j<21Y4_b8zXzcDbA0GiCL2
+R7
+31
+R8
+!i10b 1
+R9
+Z49 !s90 -reportprogress|300|-93|-work|work|C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/Register_File.vhd|
+Z50 !s107 C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/Register_File.vhd|
+!i113 1
+R12
+R13
+Abehavioural
+R2
+R3
+R4
+DEx4 work 13 register_file 0 22 QoC2Ac``=a[LQz@a9m5XZ3
+l27
+L15
+VReI>^3JoB[Wh]0fDYX16S3
+!s100 z=;0aXSjdLDbNP5Q@d]TM1
+R7
+31
+R8
+!i10b 1
+R9
+R49
+R50
+!i113 1
+R12
+R13
+Ering_buffer
+Z51 w1746287449
+R3
+R4
+R0
+Z52 8C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/ring_buffer.vhd
+Z53 FC:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/ring_buffer.vhd
+l0
+L4
+VGk5OjJn^Ff4]AogTn4OoL2
+!s100 OAN2`0K_;D9^J[:2ZRAz82
+R7
+31
+R8
+!i10b 1
+R9
+Z54 !s90 -reportprogress|300|-93|-work|work|C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/ring_buffer.vhd|
+Z55 !s107 C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/ring_buffer.vhd|
+!i113 1
+R12
+R13
+Artl
+R3
+R4
+DEx4 work 11 ring_buffer 0 22 Gk5OjJn^Ff4]AogTn4OoL2
+l58
+L34
+Vg=?e_WV<`W:k;^N`EWb4X1
+!s100 KW]FhbVfOh2R?nP89e^?g2
+R7
+31
+R8
+!i10b 1
+R9
+R54
+R55
+!i113 1
+R12
+R13
+Ese6
+Z56 w1744537752
+R3
+R4
+R0
+Z57 8C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/SE6.vhd
+Z58 FC:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/SE6.vhd
+l0
+L4
+VdFmQzjbie6>n7EmWOznXz2
+!s100 >B@KEcI^mPfLPa6ldL17X0
+R7
+31
+R22
+!i10b 1
+R23
+Z59 !s90 -reportprogress|300|-93|-work|work|C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/SE6.vhd|
+Z60 !s107 C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/SE6.vhd|
+!i113 1
+R12
+R13
+Astr
+R3
+R4
+DEx4 work 3 se6 0 22 dFmQzjbie6>n7EmWOznXz2
+l12
+L9
+V3Wan^R4MO_bA;_3=Y:o=L1
+!s100 Akj<Nk8H?0JM[:NYRW;JO1
+R7
+31
+R22
+!i10b 1
+R23
+R59
+R60
+!i113 1
+R12
+R13
+Ese9
+R56
+R3
+R4
+R0
+Z61 8C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/SE9.vhd
+Z62 FC:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/SE9.vhd
+l0
+L4
+V??P[Wm`3lOFVJz]hiem=61
+!s100 lF9gj_<9NVC1OUz7`UL:k0
+R7
+31
+R22
+!i10b 1
+R23
+Z63 !s90 -reportprogress|300|-93|-work|work|C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/SE9.vhd|
+Z64 !s107 C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/SE9.vhd|
+!i113 1
+R12
+R13
+Astr
+R3
+R4
+DEx4 work 3 se9 0 22 ??P[Wm`3lOFVJz]hiem=61
+l12
+L9
+V@=:=C;Xm[?:`mf7UMCeGz1
+!s100 mTNQMA<L;b_75b[RL^6nE0
+R7
+31
+R22
+!i10b 1
+R23
+R63
+R64
+!i113 1
+R12
+R13
+Etestbench
+Z65 w1746281171
+R2
+R3
+R4
+R0
+Z66 8C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/testbench.vhd
+Z67 FC:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/testbench.vhd
+l0
+L5
+V7DP;:5YPHBdconzKHM_?f3
+!s100 MTAB^bMb96MmMIUN@[1PY3
+R7
+31
+R8
+!i10b 1
+R9
+Z68 !s90 -reportprogress|300|-93|-work|work|C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/testbench.vhd|
+Z69 !s107 C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/testbench.vhd|
+!i113 1
+R12
+R13
+Artl
+R2
+R3
+R4
+DEx4 work 9 testbench 0 22 7DP;:5YPHBdconzKHM_?f3
+l114
+L8
+Vo<VMENFNnW?>Jh]eP;kLg3
+!s100 lhcO:KTb3Xz]69PE72]P?2
+R7
+31
+R8
+!i10b 1
+R9
+R68
+R69
+!i113 1
+R12
+R13
+Etr1
+Z70 w1745935014
+R3
+R4
+R0
+Z71 8C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/TR1.vhd
+Z72 FC:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/TR1.vhd
+l0
+L4
+Vi599gIPHOB1mT0QK_@OMJ1
+!s100 KED559PJfOBS3UEEk;?[12
+R7
+31
+R8
+!i10b 1
+R9
+Z73 !s90 -reportprogress|300|-93|-work|work|C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/TR1.vhd|
+Z74 !s107 C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/TR1.vhd|
+!i113 1
+R12
+R13
+Abehavioral
+R3
+R4
+DEx4 work 3 tr1 0 22 i599gIPHOB1mT0QK_@OMJ1
+l19
+L17
+V:@MJ:oNj]SBRKWc=SieL[3
+!s100 iO>JN6;=z69]@zjRCXIFR2
+R7
+31
+R8
+!i10b 1
+R9
+R73
+R74
+!i113 1
+R12
+R13
+Etr2
+Z75 w1745927813
+R3
+R4
+R0
+Z76 8C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/TR2.vhd
+Z77 FC:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/TR2.vhd
+l0
+L4
+V2O^8:ZcD[ViHIP:^IzEgM0
+!s100 JMX8MMKUJ@e:I;iL]5oM33
+R7
+31
+R8
+!i10b 1
+R9
+Z78 !s90 -reportprogress|300|-93|-work|work|C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/TR2.vhd|
+Z79 !s107 C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/TR2.vhd|
+!i113 1
+R12
+R13
+Abehavioral
+R3
+R4
+DEx4 work 3 tr2 0 22 2O^8:ZcD[ViHIP:^IzEgM0
+l23
+L18
+VmK`nE`15oCJ9hbaCCDdb81
+!s100 ;FYYE8cm@hk;?gi7T=L^E0
+R7
+31
+R8
+!i10b 1
+R9
+R78
+R79
+!i113 1
+R12
+R13
+Etr3
+Z80 w1745935015
+R3
+R4
+R0
+Z81 8C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/TR3.vhd
+Z82 FC:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/TR3.vhd
+l0
+L4
+VIME6QzfKb?BDT2>>1eU9:0
+!s100 @EbJ:F>hWn^5=g4lLNVJa0
+R7
+31
+R8
+!i10b 1
+R9
+Z83 !s90 -reportprogress|300|-93|-work|work|C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/TR3.vhd|
+Z84 !s107 C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/TR3.vhd|
+!i113 1
+R12
+R13
+Abehavioral
+R3
+R4
+DEx4 work 3 tr3 0 22 IME6QzfKb?BDT2>>1eU9:0
+l23
+L18
+V1VZNzoZ:VgEcNMLN6felB1
+!s100 _K2W>eoV`=4HD0Y0SzJEo2
+R7
+31
+R8
+!i10b 1
+R9
+R83
+R84
+!i113 1
+R12
+R13
+Etr4
+R80
+R3
+R4
+R0
+Z85 8C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/TR4.vhd
+Z86 FC:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/TR4.vhd
+l0
+L4
+VeoQf7eGAMXNVMYH>f8;<A0
+!s100 4g2SHKe_eW;YbifA:WlcY3
+R7
+31
+R8
+!i10b 1
+R9
+Z87 !s90 -reportprogress|300|-93|-work|work|C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/TR4.vhd|
+Z88 !s107 C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/TR4.vhd|
+!i113 1
+R12
+R13
+Abehavioral
+R3
+R4
+DEx4 work 3 tr4 0 22 eoQf7eGAMXNVMYH>f8;<A0
+l20
+L16
+VPFCM7:z^:C>:O_z3NUbbG1
+!s100 LJ2?mGF_6olMm>fEhMnk[1
+R7
+31
+R8
+!i10b 1
+R9
+R87
+R88
+!i113 1
+R12
+R13

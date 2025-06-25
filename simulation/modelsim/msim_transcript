@@ -1,0 +1,269 @@
+# Reading C:/intelFPGA_lite/18.1/modelsim_ase/tcl/vsim/pref.tcl
+# do main_cpu_multicycle_run_msim_rtl_vhdl.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim - Intel FPGA Edition vmap 10.5b Lib Mapping Utility 2016.10 Oct  5 2016
+# vmap work rtl_work 
+# Copying C:/intelFPGA_lite/18.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vcom -93 -work work {C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/mux2.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 22:58:31 on May 03,2025
+# vcom -reportprogress 300 -93 -work work C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/mux2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity mux2
+# -- Compiling architecture behavior of mux2
+# End time: 22:58:31 on May 03,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/SE9.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 22:58:31 on May 03,2025
+# vcom -reportprogress 300 -93 -work work C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/SE9.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity SE9
+# -- Compiling architecture str of SE9
+# End time: 22:58:31 on May 03,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/SE6.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 22:58:31 on May 03,2025
+# vcom -reportprogress 300 -93 -work work C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/SE6.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity SE6
+# -- Compiling architecture str of SE6
+# End time: 22:58:31 on May 03,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/ring_buffer.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 22:58:32 on May 03,2025
+# vcom -reportprogress 300 -93 -work work C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/ring_buffer.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity ring_buffer
+# -- Compiling architecture rtl of ring_buffer
+# End time: 22:58:32 on May 03,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/proc.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 22:58:32 on May 03,2025
+# vcom -reportprogress 300 -93 -work work C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/proc.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity proc
+# -- Compiling architecture rtl of proc
+# End time: 22:58:32 on May 03,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/ALU.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 22:58:32 on May 03,2025
+# vcom -reportprogress 300 -93 -work work C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/ALU.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity ALU
+# -- Compiling architecture Struct of ALU
+# End time: 22:58:32 on May 03,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/datapath.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 22:58:32 on May 03,2025
+# vcom -reportprogress 300 -93 -work work C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/datapath.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity datapath
+# -- Compiling architecture path of datapath
+# End time: 22:58:32 on May 03,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/Register_File.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 22:58:32 on May 03,2025
+# vcom -reportprogress 300 -93 -work work C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/Register_File.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity Register_File
+# -- Compiling architecture Behavioural of Register_File
+# End time: 22:58:32 on May 03,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/TR1.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 22:58:32 on May 03,2025
+# vcom -reportprogress 300 -93 -work work C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/TR1.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity TR1
+# -- Compiling architecture Behavioral of TR1
+# End time: 22:58:32 on May 03,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/TR2.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 22:58:32 on May 03,2025
+# vcom -reportprogress 300 -93 -work work C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/TR2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity TR2
+# -- Compiling architecture Behavioral of TR2
+# End time: 22:58:32 on May 03,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/TR3.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 22:58:32 on May 03,2025
+# vcom -reportprogress 300 -93 -work work C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/TR3.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity TR3
+# -- Compiling architecture Behavioral of TR3
+# End time: 22:58:32 on May 03,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/TR4.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 22:58:32 on May 03,2025
+# vcom -reportprogress 300 -93 -work work C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/TR4.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity TR4
+# -- Compiling architecture Behavioral of TR4
+# End time: 22:58:32 on May 03,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/mux4.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 22:58:32 on May 03,2025
+# vcom -reportprogress 300 -93 -work work C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/mux4.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity mux4
+# -- Compiling architecture behavior of mux4
+# End time: 22:58:32 on May 03,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/mux2x1_3bit.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 22:58:32 on May 03,2025
+# vcom -reportprogress 300 -93 -work work C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/mux2x1_3bit.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity mux2x1_3bit
+# -- Compiling architecture behavioral of mux2x1_3bit
+# End time: 22:58:32 on May 03,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/PC_Component.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 22:58:32 on May 03,2025
+# vcom -reportprogress 300 -93 -work work C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/PC_Component.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity PC_Component
+# -- Compiling architecture rtl of PC_Component
+# End time: 22:58:32 on May 03,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vcom -93 -work work {C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/testbench.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 22:58:32 on May 03,2025
+# vcom -reportprogress 300 -93 -work work C:/Users/yaswa/OneDrive/Desktop/Micro CPU Main/EE309-Spring25-Pipelined-Processor-main/src/testbench.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity testbench
+# -- Compiling architecture rtl of testbench
+# End time: 22:58:32 on May 03,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L fiftyfivenm -L rtl_work -L work -voptargs="+acc"  testbench
+# vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L fiftyfivenm -L rtl_work -L work -voptargs=""+acc"" testbench 
+# Start time: 22:58:32 on May 03,2025
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.testbench(rtl)
+# Loading work.proc(rtl)
+# Loading work.pc_component(rtl)
+# Loading work.ring_buffer(rtl)
+# Loading work.datapath(path)
+# Loading work.tr1(behavioral)
+# Loading work.se6(str)
+# Loading work.se9(str)
+# Loading work.register_file(behavioural)
+# Loading work.mux2x1_3bit(behavioral)
+# Loading work.mux4(behavior)
+# Loading work.tr2(behavioral)
+# Loading work.alu(struct)
+# Loading work.tr3(behavioral)
+# Loading work.tr4(behavioral)
+# Loading work.mux2(behavior)
+# 
+# add wave *
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# run 1000 ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/processor/Datapath_inst/Register_File_inst
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/processor/Datapath_inst/Register_File_inst
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/processor
+# ** Note: DMEM read value: 15
+#    Time: 175 ns  Iteration: 1  Instance: /testbench
+# ** Note: ===== Simulation Complete =====
+#    Time: 300 ns  Iteration: 0  Instance: /testbench
+# ** Note: DMEM read value: 768
+#    Time: 405 ns  Iteration: 1  Instance: /testbench
+# ** Note: Simulation ended successfully
+#    Time: 955 ns  Iteration: 0  Instance: /testbench
+add wave -position insertpoint  \
+sim:/testbench/processor/pc_num
+add wave -position insertpoint  \
+sim:/testbench/processor/Datapath_inst/R0 \
+sim:/testbench/processor/Datapath_inst/R1 \
+sim:/testbench/processor/Datapath_inst/R2 \
+sim:/testbench/processor/Datapath_inst/R3 \
+sim:/testbench/processor/Datapath_inst/R4 \
+sim:/testbench/processor/Datapath_inst/R5 \
+sim:/testbench/processor/Datapath_inst/R6 \
+sim:/testbench/processor/Datapath_inst/R7
+restart -f
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/processor/Datapath_inst/Register_File_inst
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/processor/Datapath_inst/Register_File_inst
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/processor
+# ** Note: DMEM read value: 15
+#    Time: 175 ns  Iteration: 1  Instance: /testbench
+# ** Note: ===== Simulation Complete =====
+#    Time: 300 ns  Iteration: 0  Instance: /testbench
+# ** Note: DMEM read value: 768
+#    Time: 405 ns  Iteration: 1  Instance: /testbench
+# ** Note: Simulation ended successfully
+#    Time: 955 ns  Iteration: 0  Instance: /testbench
+# End time: 22:59:48 on May 03,2025, Elapsed time: 0:01:16
+# Errors: 0, Warnings: 6

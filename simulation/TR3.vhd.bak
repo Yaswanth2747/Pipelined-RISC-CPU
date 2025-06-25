@@ -1,0 +1,36 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity T3 is
+    port (
+        clk                     : in std_logic;
+        opcode                  : in std_logic_vector(3 downto 0);
+        ALU_output              : in std_logic_vector(15 downto 0);
+        regA_in                 : in std_logic_vector(2 downto 0);
+        
+        opcode_buffer_out       : out std_logic_vector(3 downto 0);
+        ALU_output_buffer_out   : out std_logic_vector(15 downto 0);
+        regA_buffer_out         : out std_logic_vector(2 downto 0)
+    );
+end entity T3;
+
+architecture Behavioral of T3 is
+    signal opcode_reg         : std_logic_vector(3 downto 0);
+    signal ALU_output_reg     : std_logic_vector(15 downto 0);
+    signal regA_reg           : std_logic_vector(2 downto 0);
+begin
+    -- Assign internal registers to outputs
+    opcode_buffer_out   <= opcode_reg;
+    ALU_output_buffer_out <= ALU_output_reg;
+    regA_buffer_out     <= regA_reg;
+
+    -- Update logic on rising edge of clock
+    process(clk)
+    begin
+        if rising_edge(clk) then
+            opcode_reg       <= opcode;
+            ALU_output_reg   <= ALU_output;
+            regA_reg         <= regA_in;
+        end if;
+    end process;
+end architecture Behavioral;

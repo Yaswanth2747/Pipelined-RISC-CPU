@@ -1,0 +1,31 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity TR4 is
+    port (
+        clk                     : in std_logic;
+        DMEM_LOAD_DATA          : in std_logic_vector(15 downto 0);  -- Input data from DMEM
+        regA_addr               : in std_logic_vector(2 downto 0);   -- Address for regA
+        
+        DMEM_LOAD_DATA_buffer   : out std_logic_vector(15 downto 0);  -- Buffered DMEM_LOAD_DATA
+        regA_addr_buffer        : out std_logic_vector(2 downto 0)    -- Buffered regA_addr
+    );
+end entity TR4;
+
+architecture Behavioral of TR4 is
+    signal DMEM_LOAD_DATA_reg   : std_logic_vector(15 downto 0);  -- Internal signal for DMEM_LOAD_DATA
+    signal regA_addr_reg        : std_logic_vector(2 downto 0);   -- Internal signal for regA_addr
+begin
+    -- Assign internal signals to outputs
+    DMEM_LOAD_DATA_buffer   <= DMEM_LOAD_DATA_reg;
+    regA_addr_buffer        <= regA_addr_reg;
+
+    -- Update logic on rising edge of clock
+    process(clk)
+    begin
+        if rising_edge(clk) then
+            DMEM_LOAD_DATA_reg   <= DMEM_LOAD_DATA;   -- Store DMEM_LOAD_DATA in internal register
+            regA_addr_reg        <= regA_addr;         -- Store regA_addr in internal register
+        end if;
+    end process;
+end architecture Behavioral;
